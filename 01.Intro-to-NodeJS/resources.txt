@@ -4,3 +4,6 @@ https://www.hostinger.com/tutorials/what-is-npm
 02. Event loop
 https://www.geeksforgeeks.org/what-is-an-event-loop-in-javascript/
 https://www.javascripttutorial.net/javascript-event-loop/
+
+03. Modules
+https://blog.logrocket.com/commonjs-vs-es-modules-node-js/
