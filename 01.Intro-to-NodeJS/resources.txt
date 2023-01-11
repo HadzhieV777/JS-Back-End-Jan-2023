@@ -8,3 +8,6 @@ https://www.javascripttutorial.net/javascript-event-loop/
 03. Modules
 https://blog.logrocket.com/commonjs-vs-es-modules-node-js/
 https://www.geeksforgeeks.org/node-js-modules/
+
+04. NodeJS http module
+https://nodejs.org/docs/latest/api/url.html
