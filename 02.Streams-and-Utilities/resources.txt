@@ -1,0 +1,4 @@
+01. Pub-Sub Pattern
+https://rahuulmiishra.medium.com/understanding-pub-sub-design-pattern-in-javascript-29a7bef28c24
+https://blog.sessionstack.com/how-javascript-works-the-publisher-subscriber-pattern-9edc62ef1a68
+https://www.c-sharpcorner.com/UploadFile/5d932c/pubsubpattern-in-javascript/
