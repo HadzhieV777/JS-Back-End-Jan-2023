@@ -2,3 +2,8 @@
 https://rahuulmiishra.medium.com/understanding-pub-sub-design-pattern-in-javascript-29a7bef28c24
 https://blog.sessionstack.com/how-javascript-works-the-publisher-subscriber-pattern-9edc62ef1a68
 https://www.c-sharpcorner.com/UploadFile/5d932c/pubsubpattern-in-javascript/
+
+02.Streams
+https://www.tutorialspoint.com/nodejs/nodejs_streams.htm
+https://www.geeksforgeeks.org/node-js-streams/
+https://medium.com/developers-arena/streams-and-buffers-in-nodejs-30ff53edd50f
