@@ -6,8 +6,14 @@ function getContentType(pn) {
   if (pn.endsWith("css")) {
     return "text/css";
   }
-  if (pn.endsWith("html")) {
-    return "text/html";
+  if (pn.endsWith("ico")) {
+    return "image/svg+xml";
+  }
+  if (pn.endsWith("jpeg") || pn.endsWith("jpg")) {
+    return "image/jpeg";
+  }
+  if (pn.endsWith("png")) {
+    return "image/png";
   }
 }
 
@@ -16,7 +22,6 @@ module.exports = (req, res) => {
 
   if (pathname.startsWith("/content") && req.method === "GET") {
     fs.readFile(`./${pathname}`, "utf-8", (error, data) => {
-      console.log(data);
       if (error) {
         res.writeHead(404);
         res.writeHead(404, {
