@@ -1,43 +1,44 @@
-const url = require("url");
-const fs = require("fs");
-const path = require("path");
+const fsp = require("fs/promises");
 
-function getContentType(pn) {
-  if (pn.endsWith("css")) {
+async function staticHandler(req, res) {
+  const pathname = req.url;
+
+  try {
+    const data = await fsp.readFile(`./${pathname}`, getEncoding(pathname));
+
+    res.writeHead(200, {
+      "Content-Type": getContentType(pathname),
+    });
+    res.write(data);
+    res.end();
+  } catch (error) {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.write("404 Not Found");
+    res.end();
+  }
+}
+
+function getContentType(pathname) {
+  if (pathname.endsWith("css")) {
     return "text/css";
   }
-  if (pn.endsWith("ico")) {
-    return "image/svg+xml";
-  }
-  if (pn.endsWith("jpeg") || pn.endsWith("jpg")) {
+  if (pathname.endsWith("jpeg") || pathname.endsWith("jpg")) {
     return "image/jpeg";
   }
-  if (pn.endsWith("png")) {
+  if (pathname.endsWith("png")) {
     return "image/png";
   }
 }
 
-module.exports = (req, res) => {
-  const pathname = url.parse(req.url).pathname;
-
-  if (pathname.startsWith("/content") && req.method === "GET") {
-    fs.readFile(`./${pathname}`, "utf-8", (error, data) => {
-      if (error) {
-        res.writeHead(404);
-        res.writeHead(404, {
-          "Content-Type": "text/plain",
-        });
-        res.write("Whoops! File not found!");
-      }
-
-      res.writeHead(200, {
-        "Content-Type": getContentType(pathname),
-      });
-
-      res.write(data);
-      res.end();
-    });
-  } else {
-    return true;
+function getEncoding(pathname) {
+  if (
+    pathname.endsWith("jpeg") ||
+    pathname.endsWith("jpg") ||
+    pathname.endsWith("png")
+  ) {
+    return "";
   }
-};
+  return "utf-8";
+}
+
+module.exports = staticHandler;
