@@ -7,3 +7,7 @@ https://www.c-sharpcorner.com/UploadFile/5d932c/pubsubpattern-in-javascript/
 https://www.tutorialspoint.com/nodejs/nodejs_streams.htm
 https://www.geeksforgeeks.org/node-js-streams/
 https://medium.com/developers-arena/streams-and-buffers-in-nodejs-30ff53edd50f
+
+03. Project Structure
+https://www.softwareontheroad.com/ideal-nodejs-project-structure/
+https://dreamix.eu/blog/frontpage/node-js-project-structure-a-short-guide
