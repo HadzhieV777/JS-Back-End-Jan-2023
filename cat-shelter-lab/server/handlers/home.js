@@ -1,6 +1,8 @@
 const fsp = require("fs/promises");
 const path = require("path");
 
+const { allCatsTemplate } = require("../utils/template");
+
 async function get(req, res) {
   const filePath = path.normalize(path.join(__dirname, "../views/index.html"));
 
@@ -9,7 +11,9 @@ async function get(req, res) {
     res.writeHead(200, {
       "Content-Type": "text/html",
     });
-    res.write(data);
+
+    const modifiedData = data.toString().replace('{{allCats}}', allCatsTemplate)
+    res.write(modifiedData);
     res.end();
   } catch {
     res.writeHead(404, {
