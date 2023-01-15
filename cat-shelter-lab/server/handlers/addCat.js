@@ -13,11 +13,11 @@ async function get(req, res) {
       "Content-Type": "text/html",
     });
 
-    const layout = data
+    const modifiedData = data
       .toString()
-      .replace("{{breeds}}", allBreedsTemplate.join(""));
+      .replace("{{catBreeds}}", allBreedsTemplate.join(""));
     
-    res.write(layout);
+    res.write(modifiedData);
     res.end();
   } catch (error) {
     res.writeHead(404, {
