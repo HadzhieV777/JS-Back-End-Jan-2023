@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "name": "Tommy ",
+        "description": "Tommy is super cute but is homeless. ",
+        "breed": "Unknow Breed",
+        "image": "cat.jpeg",
+        "id": "00000000"
+    },
+    {
+        "name": "Jerry",
+        "description": "Super cute cat. Street fighter. Loves fish.",
+        "breed": "Bombay Cat",
+        "image": "cat2.jpeg",
+        "id": "01fc9d26"
+    }
+]
