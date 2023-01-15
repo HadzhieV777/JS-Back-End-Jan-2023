@@ -9,6 +9,7 @@ const homeHandler = require("./handlers/home");
 // Routes
 router.get("/", homeHandler.get);
 router.get("/cats/add-breed", addBreedHandler.get);
+router.post("/cats/add-breed", addBreedHandler.post);
 router.get("/cats/add-cat", addCatHandler.get);
 
 const hostname = "127.0.0.1";
