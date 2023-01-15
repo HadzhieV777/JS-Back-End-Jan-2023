@@ -11,6 +11,7 @@ router.get("/", homeHandler.get);
 router.get("/cats/add-breed", addBreedHandler.get);
 router.post("/cats/add-breed", addBreedHandler.post);
 router.get("/cats/add-cat", addCatHandler.get);
+router.post("/cats/add-cat", addCatHandler.post);
 
 const hostname = "127.0.0.1";
 const port = 3000;
