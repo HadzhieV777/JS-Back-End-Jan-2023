@@ -2,13 +2,14 @@ const http = require("http");
 
 // Router
 const router = require("./router/router");
-const addBreedHandler = require('./handlers/addBreed');
-const homeHandler = require('./handlers/home');
+const addBreedHandler = require("./handlers/addBreed");
+const addCatHandler = require("./handlers/addCat");
+const homeHandler = require("./handlers/home");
 
 // Routes
-router.get('/', homeHandler.get);
-router.get('/cats/add-breed', addBreedHandler.get);
-
+router.get("/", homeHandler.get);
+router.get("/cats/add-breed", addBreedHandler.get);
+router.get("/cats/add-cat", addCatHandler.get);
 
 const hostname = "127.0.0.1";
 const port = 3000;
