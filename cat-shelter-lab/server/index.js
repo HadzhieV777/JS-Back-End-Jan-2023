@@ -6,6 +6,7 @@ const addBreedHandler = require("./handlers/addBreed");
 const addCatHandler = require("./handlers/addCat");
 const homeHandler = require("./handlers/home");
 const catShelterHandler = require("./handlers/catShelter");
+const editCatHandler = require("./handlers/editCat");
 
 // Routes
 router.get("/", homeHandler.get);
@@ -15,6 +16,7 @@ router.get("/cats/add-cat", addCatHandler.get);
 router.post("/cats/add-cat", addCatHandler.post);
 router.get("/cats-find-new-home", catShelterHandler.get);
 router.post("/cats-find-new-home", catShelterHandler.post);
+router.get("/cats-edit", editCatHandler.get);
 
 const hostname = "127.0.0.1";
 const port = 3000;
