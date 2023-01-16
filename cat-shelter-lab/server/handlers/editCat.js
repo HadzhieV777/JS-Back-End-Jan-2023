@@ -83,9 +83,34 @@ function post(req, res) {
   });
 }
 
+async function deleteCat(req, res) {
+  try {
+    const { cats, cat } = await getAllCats(req);
+
+    const otherCats = cats.filter((x) => x.id != cat.id);
+    const updatedList = JSON.stringify(otherCats, null, 2);
+
+    await fsp.writeFile("./data/cats.json", updatedList, "utf-8");
+    const filePath = path.normalize(
+      path.join(__dirname, "../content/images/", cat.image)
+    );
+    await fsp.unlink(filePath);
+
+    res.writeHead(301, {
+      Location: "/",
+    });
+    res.end();
+  } catch (error) {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.write(error.message);
+    res.end();
+  }
+}
+
 const editCatHandler = {
   get,
   post,
+  deleteCat,
 };
 
 module.exports = editCatHandler;
