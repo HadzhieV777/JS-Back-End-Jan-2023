@@ -41,8 +41,6 @@ function post(req, res) {
       // store the path of the uploaded file on the server's file system when the form is initially parsed
       // This path is typically a temporary location where the file is stored after upload and before it is processed
       const oldPath = file.upload.filepath;
-      console.log(file.upload.originalFilename)
-      console.log(oldPath);
 
       // store the desired final location of the file on the server's file system after it has been processed
       const newPath = path.normalize(
