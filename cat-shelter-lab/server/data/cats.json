@@ -5,12 +5,5 @@
     "breed": "Bombay Cat",
     "image": "cat2.jpeg",
     "id": "00000000"
-  },
-  {
-    "name": "Pesho",
-    "description": "A hood boy. Very fluffy.",
-    "breed": "Unknow Breed",
-    "image": "cat.jpeg",
-    "id": "03cdf988"
   }
 ]
