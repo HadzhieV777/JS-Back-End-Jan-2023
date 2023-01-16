@@ -25,5 +25,5 @@ const allCatsTemplate = cats.map(catTemplate).join("");
 
 module.exports = {
   allBreedsTemplate,
-  allCatsTemplate
+  allCatsTemplate,
 };
