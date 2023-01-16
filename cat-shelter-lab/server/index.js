@@ -17,6 +17,7 @@ router.post("/cats/add-cat", addCatHandler.post);
 router.get("/cats-find-new-home", catShelterHandler.get);
 router.post("/cats-find-new-home", catShelterHandler.post);
 router.get("/cats-edit", editCatHandler.get);
+router.post("/cats-edit", editCatHandler.post);
 
 const hostname = "127.0.0.1";
 const port = 3000;
