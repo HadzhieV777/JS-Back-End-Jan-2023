@@ -13,3 +13,6 @@ https://www.tutorialspoint.com/expressjs/expressjs_middleware.htm
 04. Templating
 https://handlebarsjs.com/
 https://ejs.co/
+
+05. Other
+https://npmtrends.com/
