@@ -5,3 +5,7 @@ https://www.geeksforgeeks.org/express-js/
 02. Routing
 https://expressjs.com/en/guide/routing.html
 https://www.geeksforgeeks.org/express-js-express-router-function/
+
+03. Templating
+https://handlebarsjs.com/
+https://ejs.co/
