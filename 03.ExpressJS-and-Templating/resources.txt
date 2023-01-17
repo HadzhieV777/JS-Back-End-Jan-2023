@@ -1,3 +1,7 @@
 01. Express.js
 https://www.educba.com/what-is-expressjs/
 https://www.geeksforgeeks.org/express-js/
+
+02. Routing
+https://expressjs.com/en/guide/routing.html
+https://www.geeksforgeeks.org/express-js-express-router-function/
