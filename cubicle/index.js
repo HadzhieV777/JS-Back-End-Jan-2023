@@ -1,14 +1,8 @@
 const env = process.env.NODE_ENV || "development";
 const config = require("./config/config")[env];
 const app = require("express")();
-const routes = require("./config/routes");
-require("./config/express")(app);
 
-// Middlewares
-app.use("/", routes);
-app.use((req, res) => {
-  res.status(404).render("404");
-});
+require("./config/express")(app);
 
 app.listen(
   config.port,
