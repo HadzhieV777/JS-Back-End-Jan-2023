@@ -18,6 +18,7 @@ class Cube {
         "utf-8"
       );
 
+      cube.id = db.cubes[db.cubes.length - 1].id + 1;
       // Parse data
       const jsonData = JSON.parse(data);
 
@@ -27,7 +28,7 @@ class Cube {
       // Write the stringified obj
       await fsp.writeFile(
         path.resolve(__dirname, "../config/database.json"),
-        JSON.stringify(jsonData)
+        JSON.stringify(jsonData, null, 2)
       );
     } catch (error) {
       console.log(error);
