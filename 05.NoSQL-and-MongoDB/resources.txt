@@ -1,0 +1,3 @@
+1. Relational DB under the hood
+ - https://stackoverflow.com/questions/2886134/how-do-relational-databases-work-under-the-hood
+ - https://en.wikipedia.org/wiki/B%2B_tree
