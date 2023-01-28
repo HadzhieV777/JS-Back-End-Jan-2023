@@ -1,39 +1,29 @@
-const fsp = require("fs/promises");
-const db = require("../config/database.json");
-const path = require("path");
+const { Schema, model } = require("mongoose");
 
-class Cube {
-  constructor(name, description, imageUrl, difficultyLevel) {
-    this.name = name;
-    this.description = description;
-    this.imageUrl = imageUrl;
-    this.difficultyLevel = difficultyLevel;
-  }
+const cubeSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+    maxLength: 50, // Check length
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+    // TODO add http/https validation
+  },
+  difficultyLevel: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 6,
+  },
+  // Accessories - (ObjectId, ref Accessories Model)
+});
 
-  static async save(cube) {
-    try {
-      // Read file
-      const data = await fsp.readFile(
-        path.resolve(__dirname, "../config/database.json"),
-        "utf-8"
-      );
-
-      cube.id = db.cubes[db.cubes.length - 1].id + 1;
-      // Parse data
-      const jsonData = JSON.parse(data);
-
-      // Push the obj
-      jsonData.cubes.push(cube);
-
-      // Write the stringified obj
-      await fsp.writeFile(
-        path.resolve(__dirname, "../config/database.json"),
-        JSON.stringify(jsonData, null, 2)
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
+const Cube = model("Cube", cubeSchema);
 
 module.exports = Cube;
