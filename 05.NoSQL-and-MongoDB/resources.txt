@@ -5,3 +5,6 @@
 2. Mongoose
  - https://mongoosejs.com/
  - https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
+ 
+3. CRUD with Mongoose
+ - https://coursework.vschool.io/mongoose-crud/
