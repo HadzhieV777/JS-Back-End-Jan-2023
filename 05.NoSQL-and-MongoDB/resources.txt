@@ -2,9 +2,13 @@
  - https://stackoverflow.com/questions/2886134/how-do-relational-databases-work-under-the-hood
  - https://en.wikipedia.org/wiki/B%2B_tree
  
-2. Mongoose
+2. MongoDB
+ - https://www.mongodb.com/docs/
+ - https://www.mongodb.com/basics/crud
+ 
+3. Mongoose
  - https://mongoosejs.com/
  - https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
  
-3. CRUD with Mongoose
+4. CRUD with Mongoose
  - https://coursework.vschool.io/mongoose-crud/
