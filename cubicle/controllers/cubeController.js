@@ -1,32 +1,42 @@
 const Cube = require("../models/Cube");
-const db = require("../config/database.json");
+const Accessory = require("../models/Accessory");
 
 exports.getCreateCube = (req, res) => {
-  res.render("create");
+  res.render("cube/create");
 };
 
-exports.postCreateCube = (req, res) => {
-  let cube = new Cube(
-    req.body.name,
-    req.body.description,
-    req.body.imageUrl,
-    req.body.difficultyLevel
-  );
-  Cube.save(cube);
+exports.postCreateCube = async (req, res) => {
+  const { name, description, imageUrl, difficultyLevel } = req.body;
+  let cube = new Cube({ name, description, imageUrl, difficultyLevel });
+
+  await cube.save();
   res.redirect("/");
 };
 
-exports.getDetails = (req, res) => {
-  let cubeId = Number(req.params.cubeId);
-
-  if (!cubeId) {
-    return res.redirect("/404");
-  }
-
-  let cube = db.cubes.find((x) => x.id === cubeId);
+exports.getDetails = async (req, res) => {
+  const cube = await Cube.findById(req.params.cubeId)
+    .populate("accessories")
+    .lean();
 
   if (!cube) {
     return res.redirect("/404");
   }
-  res.render("details", { cube });
+  res.render("cube/details", { cube });
+};
+
+exports.getAttachAccessory = async (req, res) => {
+  const cube = await Cube.findById(req.params.cubeId).lean();
+  const accessories = await Accessory.find().lean();
+
+  res.render("cube/attach", { cube, accessories });
+};
+
+exports.postAttachAccessory = async (req, res) => {
+  // We can change documents but can't change leans
+  const cube = await Cube.findById(req.params.cubeId);
+  const accessoryId = req.body.accessory;
+
+  cube.accessories.push(accessoryId);
+  await cube.save();
+  res.redirect(`/cubes/${cube._id}/details`);
 };
