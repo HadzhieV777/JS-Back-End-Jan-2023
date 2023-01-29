@@ -1,7 +1,9 @@
-const db = require("../config/database.json");
+const Cube = require("../models/Cube");
 
-exports.getHomePage = (req, res) => {
-  let cubes = db.cubes;
+exports.getHomePage = async (req, res) => {
+  // ,lean() return objecst as pure Objects not Documents
+  let cubes = await Cube.find().lean();
+
   const { search, from, to } = req.query;
 
   if (search) {
