@@ -12,3 +12,6 @@
  
 4. CRUD with Mongoose
  - https://coursework.vschool.io/mongoose-crud/
+ 
+05. MongoDB operators
+ - https://www.mongodb.com/docs/manual/reference/operator/
