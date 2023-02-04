@@ -1,5 +1,7 @@
-const User = require('../models/User')
+const User = require("../models/User");
 
-exports.login = (username, plainPass) => {
-    
-}
+exports.getByUsername = (username) => User.findOne({ username });
+
+exports.register = async (username, plainPass) => {
+  User.create(username, plainPass);
+};
