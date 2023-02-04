@@ -1,6 +1,7 @@
 const { Schema, model, Types } = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const cubeSchema = new Schema({
+const userSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -9,6 +10,19 @@ const cubeSchema = new Schema({
   password: {
     type: String,
     required: true,
-    minLength: 5,
+    minLength: [6, 'Password must be at least 6 characters long!'],
   },
 });
+
+// Hash password
+userSchema.pre('save', function(next) {
+  bcrypt.hash(this.password, 10).then(hash => {
+    this.password = hash;
+
+    next();
+  });
+});
+
+const User = model("User", userSchema);
+
+module.exports = User;
