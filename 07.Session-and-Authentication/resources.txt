@@ -7,3 +7,6 @@ https://www.sohamkamani.com/nodejs/session-cookie-authentication/
 https://expressjs.com/en/resources/middleware/session.html
 https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/
 https://www.javatpoint.com/session-vs-cookies
+
+03. Bcrypt
+https://auth0.com/blog/hashing-in-action-understanding-bcrypt/
