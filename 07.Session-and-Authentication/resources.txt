@@ -1,4 +1,9 @@
-01. Cookies and Session
+01. Cookies 
 https://www.geeksforgeeks.org/session-cookies-in-node-js/
 https://dev.to/edemagbenyo/nodejs-authentication-with-cookies-and-session-part-2-2752
 https://www.sohamkamani.com/nodejs/session-cookie-authentication/
+
+02. Session 
+https://expressjs.com/en/resources/middleware/session.html
+https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/
+https://www.javatpoint.com/session-vs-cookies
