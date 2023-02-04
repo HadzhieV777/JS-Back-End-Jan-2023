@@ -4,9 +4,11 @@ const cubeSchema = new Schema({
   username: {
     type: String,
     required: true,
+    minLength: 3,
   },
   password: {
-    type: S,
+    type: String,
     required: true,
+    minLength: 5,
   },
 });
