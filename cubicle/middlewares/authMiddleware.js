@@ -7,9 +7,12 @@ exports.auth = async (req, res, next) => {
   if (token) {
     try {
       const decodedToken = await jwt.verify(token, config.development.SECRET);
+
+      req.user = decodedToken;
     } catch (err) {
       console.log(err);
-      return res.redirect("/404");
+      res.clearCookie("auth");
+      res.redirect("/404");
     }
   }
 };
