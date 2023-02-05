@@ -13,13 +13,12 @@ exports.postCreateCube = async (req, res) => {
   if (!token) {
     res.redirect("/404");
   }
-try {
+  try {
+    const decodedToken = await jwt.verify(token, config.development.SECRET);
+    
+  } catch (error) {
 
-} catch (error) {
-  
-}
-  const decodedToken = await jwt.verify(token, config.development.SECRET);
-
+  }
 
   const { name, description, imageUrl, difficultyLevel } = req.body;
   let cube = new Cube({ name, description, imageUrl, difficultyLevel });
