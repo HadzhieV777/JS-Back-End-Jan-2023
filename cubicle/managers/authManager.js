@@ -1,6 +1,9 @@
 const util = require("util");
 const jwtCallback = require("jsonwebtoken");
-const jwt = util.promisify(jwtCallback)
+const jwt = {
+  sign: util.promisify(jwtCallback.sign),
+}
+
 const User = require("../models/User");
 const config = require("../config/config");
 
