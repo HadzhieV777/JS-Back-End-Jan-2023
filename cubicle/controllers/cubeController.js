@@ -1,11 +1,21 @@
 const Cube = require("../models/Cube");
 const Accessory = require("../models/Accessory");
+const jwt = require("../lib/jsonwebtoken");
+const config = require("../config/config");
 
 exports.getCreateCube = (req, res) => {
   res.render("cube/create");
 };
 
 exports.postCreateCube = async (req, res) => {
+  const token = req.cookies["auth"];
+
+  if (!token) {
+    res.redirect("/404");
+  }
+
+  await jwt.verify(token, config.development.SECRET);
+
   const { name, description, imageUrl, difficultyLevel } = req.body;
   let cube = new Cube({ name, description, imageUrl, difficultyLevel });
 
@@ -27,7 +37,7 @@ exports.getDetails = async (req, res) => {
 exports.getAttachAccessory = async (req, res) => {
   const cube = await Cube.findById(req.params.cubeId).lean();
   const accessories = await Accessory.find({
-    _id: { $nin: cube.accessories }
+    _id: { $nin: cube.accessories },
   }).lean();
 
   res.render("cube/attach", { cube, accessories });
@@ -42,7 +52,6 @@ exports.postAttachAccessory = async (req, res) => {
   await cube.save();
   res.redirect(`/cubes/${cube._id}/details`);
 };
-
 
 exports.getEditCube = (req, res) => {
   res.render("cube/edit");
