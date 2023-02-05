@@ -31,10 +31,13 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  const user = await authManager.login(username, password);
-  console.log(user);
-
-  res.redirect("/");
+  try {
+    const token = await authManager.login(username, password);
+    res.cookie("auth", token);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;
