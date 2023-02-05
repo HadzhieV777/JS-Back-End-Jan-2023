@@ -8,17 +8,7 @@ exports.getCreateCube = (req, res) => {
 };
 
 exports.postCreateCube = async (req, res) => {
-  const token = req.cookies["auth"];
 
-  if (!token) {
-    res.redirect("/404");
-  }
-  try {
-    const decodedToken = await jwt.verify(token, config.development.SECRET);
-    
-  } catch (error) {
-
-  }
 
   const { name, description, imageUrl, difficultyLevel } = req.body;
   let cube = new Cube({ name, description, imageUrl, difficultyLevel });
