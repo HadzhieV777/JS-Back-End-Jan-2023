@@ -34,10 +34,10 @@ router.post("/login", async (req, res) => {
   try {
     const token = await authManager.login(username, password);
     res.cookie("auth", token);
-    res.redirect("/");
   } catch (err) {
     console.log(err);
   }
+  res.redirect("/");
 });
 
 module.exports = router;
