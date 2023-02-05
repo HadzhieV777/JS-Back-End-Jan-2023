@@ -10,17 +10,21 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    minLength: [6, 'Password must be at least 6 characters long!'],
+    minLength: [6, "Password must be at least 6 characters long!"],
   },
 });
 
 // Hash password
-userSchema.pre('save', function(next) {
-  bcrypt.hash(this.password, 10).then(hash => {
+userSchema.pre("save", function (next) {
+  bcrypt.hash(this.password, 10).then((hash) => {
     this.password = hash;
 
     next();
   });
+});
+
+userSchema.method('validatePassword', function(password) {
+    return bcrypt.compare(password, this.password);
 });
 
 const User = model("User", userSchema);
