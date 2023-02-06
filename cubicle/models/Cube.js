@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model, Types, default: mongoose } = require("mongoose");
 
 const cubeSchema = new Schema({
   name: {
@@ -32,6 +32,10 @@ const cubeSchema = new Schema({
       ref: "Accessory",
     },
   ],
+  owner: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Cube = model("Cube", cubeSchema);
