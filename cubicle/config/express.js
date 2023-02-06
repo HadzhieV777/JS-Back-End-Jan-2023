@@ -3,6 +3,8 @@ const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 module.exports = (app) => {
   // Setup the view engine
@@ -17,6 +19,12 @@ module.exports = (app) => {
 
   // Setup the body parser
   app.use(express.urlencoded({ extended: false }));
+
+  // Setup cookie-parser
+  app.use(cookieParser());
+
+  // Setup auth middleware
+  app.use(authMiddleware.auth);
 
   // Setup the static files
   app.use(express.static("static"));
