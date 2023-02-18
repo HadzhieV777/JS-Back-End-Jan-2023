@@ -85,11 +85,11 @@ cryptoController.post("/:id/edit", async (req, res) => {
 });
 
 cryptoController.get("/:id/delete", async (req, res) => {
-  const crypto = await getById(req.params.id);
+  // const crypto = await getById(req.params.id);
 
-  if (crypto.owner != req.user._id) {
-    return res.redirect("/auth/login");
-  }
+  // if (crypto.owner != req.user._id) {
+  //  return res.redirect("/auth/login");
+  // }
 
   await deleteById(req.params.id);
   res.redirect("/catalog");
