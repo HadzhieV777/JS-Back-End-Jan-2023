@@ -1,0 +1,14 @@
+const authController = require("../controllers/authController");
+const homeController = require("../controllers/homeController");
+
+module.exports = (app) => {
+  app.use("/", homeController);
+  app.use("/auth", authController);
+
+
+
+  // Handle not found
+  // app.use((req, res) => {
+  //   res.status(404).render("404");
+  // });
+};
