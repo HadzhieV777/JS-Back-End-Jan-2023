@@ -6,7 +6,7 @@
           Login
         </h2>
       </div>
-      <form class="card-form" action="" method="">
+      <form class="card-form" action="/auth/login" method="POST">
 
         <div class="input">
           <input
@@ -14,8 +14,8 @@
             class="input-field"
             placeholder="alexander"
             id="username"
-            name=""
-            value=""
+            name="username"
+            value="{{body.name}}"
           />
           <label class="username">Username</label>
         </div>
@@ -24,7 +24,7 @@
             type="password"
             class="input-field"
             id="password"
-            name=""
+            name="password"
             placeholder="******"
           />
           <label class="password">Password</label>
@@ -35,7 +35,7 @@
       </form>
       <div class="card-info">
         <p>Dont have an account?
-          <a href="#">Sign up</a>.
+          <a href="/auth/register">Sign up</a>.
         </p>
       </div>
     </div>
