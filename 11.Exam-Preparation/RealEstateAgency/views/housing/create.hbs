@@ -5,15 +5,15 @@
 
       <h2 class="box-heading"> Add new home</h2>
 
-      <form class="form" action="" method="">
+      <form class="form" action="/housing/create" method="POST">
         <div class="input">
           <input
             type="text"
             class="input-field"
             id="home-name"
             placeholder="Real House Luxury Villa..."
-            name=""
-            value=""
+            name="name"
+            value="{{body.name}}"
           />
           <label class="home-name">Name:</label>
         </div>
@@ -23,8 +23,8 @@
             class="input-field"
             id="type"
             placeholder="Villa..."
-            name=""
-            value=""
+            name="type"
+            value="{{body.type}}"
           />
           <label class="type">Property Type:</label>
         </div>
@@ -34,8 +34,8 @@
             class="input-field"
             id="year"
             placeholder="2018..."
-            name=""
-            value=""
+            name="year"
+            value="{{body.year}}"
           />
           <label class="year">Year Built:</label>
         </div>
@@ -45,8 +45,8 @@
             class="input-field"
             id="city"
             placeholder="Sofia..."
-            name=""
-            value=""
+            name="city"
+            value="{{body.city}}"
           />
           <label class="city">City</label>
         </div>
@@ -57,8 +57,8 @@
             class="input-field"
             id="homeImage"
             placeholder="Image..."
-            name=""
-            value=""
+            name="imageUrl"
+            value="{{body.imageUrl}}"
           />
           <label class="homeImage">Home Image:</label>
         </div>
@@ -69,8 +69,8 @@
             class="input-field"
             id="description"
             placeholder="Description..."
-            name=""
-            value=""
+            name="description"
+            value="{{body.description}}"
           />
           <label class="description">Property Description:</label>
         </div>
@@ -81,8 +81,8 @@
             class="input-field"
             id="availablePieces"
             placeholder="1"
-            name=""
-            value=""
+            name="availablePieces"
+            value="{{body.availablePieces}}"
           />
           <label class="availablePieces">Available pieces:</label>
         </div>
