@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 const JWT_SECRET = "asd2as78asd83dxv32sd";
 
-async function register(username, password) {
+async function register(name, username, password) {
   const existing = await User.findOne({ username }).collation({
     locale: "en",
     strength: 2,
@@ -17,6 +17,7 @@ async function register(username, password) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await User.create({
+    name,
     username,
     hashedPassword,
   });
@@ -38,7 +39,7 @@ async function login(username, password) {
 
   const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
 
-  if (passwordMatch == false) {
+  if (!passwordMatch) {
     throw new Error("Invalid username or password!");
   }
 
