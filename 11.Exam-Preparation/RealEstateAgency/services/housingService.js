@@ -4,6 +4,10 @@ async function getAll() {
   return Housing.find().lean();
 }
 
+async function getTopHouses() {
+  return Housing.find().sort({ createdAt: -1 }).limit(3).lean();
+}
+
 async function getById(id) {
   return Housing.findById(id).lean();
 }
@@ -27,13 +31,33 @@ async function update(id, housing) {
 }
 
 async function deleteById(id) {
-  await Housing.findByIdAndDelete(id);
+  await Housing.findByIdAndRemove(id);
+}
+
+async function rent(housingId, userId) {
+  const housing = await Housing.findById(housingId);
+
+  if (housing.tenants.includes(userId)) {
+    throw new Error("Cannot rent twice!");
+  }
+
+  housing.tenants.push(userId);
+  housing.availablePieces -= 1;
+
+  await housing.save();
+}
+
+async function filter(type) {
+  return Housing.find({ type }).lean();
 }
 
 module.exports = {
   getAll,
   getById,
+  getTopHouses,
   create,
   update,
   deleteById,
+  rent,
+  filter,
 };
