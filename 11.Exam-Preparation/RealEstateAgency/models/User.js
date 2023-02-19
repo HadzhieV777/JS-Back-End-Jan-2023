@@ -1,7 +1,16 @@
 const { Schema, model } = require("mongoose");
 
-// TODO add User properties and validation according to assignment
+const NAME_PATTERN = /[A-Z][a-z]+\s[A-Z][a-z]+/
+
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    validate: {
+      validator: (value) => NAME_PATTERN.test(value),
+      message: "Name is not valid!",
+    },
+  },
   username: {
     type: String,
     required: true,
