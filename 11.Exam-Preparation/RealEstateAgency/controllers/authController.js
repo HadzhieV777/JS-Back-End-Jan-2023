@@ -1,10 +1,9 @@
 const { register, login } = require("../services/userService");
 const { parseError } = require("../utils/parser");
-
+const { isUser, isGuest } = require("../middlewares/guards");
 const authController = require("express").Router();
 
-authController.get("/register", (req, res) => {
-  // TODO replace with actual view by assignment
+authController.get("/register", isGuest(), (req, res) => {
   res.render("auth/register", {
     title: "Register Page",
   });
@@ -12,36 +11,45 @@ authController.get("/register", (req, res) => {
 
 authController.post("/register", async (req, res) => {
   try {
-    if (req.body.username == "" || req.body.password == "") {
+    if (
+      req.body.name == "" ||
+      req.body.username == "" ||
+      req.body.password == ""
+    ) {
       throw new Error("All fields are required!");
     }
 
-    // TODO change rePass name if needed
+    if (req.body.password.length < 4) {
+      throw new Error("Password must be at least 4 characters long!");
+    }
+
     if (req.body.password != req.body.rePass) {
       throw new Error("Passwords not match!");
     }
 
-    const token = await register(req.body.username, req.body.password);
+    const token = await register(
+      req.body.name,
+      req.body.username,
+      req.body.password
+    );
 
-    // TODO check assignment to see if register creates session
     res.cookie("auth", token);
-    res.redirect("/"); // TODO replace with redirect by assignment
+    res.redirect("/");
   } catch (error) {
     const errors = parseError(error);
 
-    // TODO add error display to actual template from assignment
     res.render("auth/register", {
       title: "Register Page",
       errors,
       body: {
+        name: req.body.name,
         username: req.body.username,
       },
     });
   }
 });
 
-authController.get("/login", (req, res) => {
-  // TODO replace with actual view by assignment
+authController.get("/login", isGuest(), (req, res) => {
   res.render("auth/login", {
     title: "Login Page",
   });
@@ -56,7 +64,7 @@ authController.post("/login", async (req, res) => {
     const token = await login(req.body.username, req.body.password);
 
     res.cookie("auth", token);
-    res.redirect("/"); // TODO replace with redirect by assignment
+    res.redirect("/");
   } catch (error) {
     const errors = parseError(error);
     res.render("auth/login", {
@@ -69,9 +77,9 @@ authController.post("/login", async (req, res) => {
   }
 });
 
-authController.get('/logout', (req, res) => {
-  res.clearCookie('auth')
+authController.get("/logout", isUser(), (req, res) => {
+  res.clearCookie("auth");
   res.redirect("/");
-})
+});
 
 module.exports = authController;
