@@ -1,4 +1,5 @@
 <section class="profile-page">
+   {{#with user}}
   <div class="profile-card">
     <div class="top-section">
       <i class="message fas fa-envelope"></i>
@@ -8,7 +9,7 @@
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPnjeYyAvdnoC_gdZYcJJK_f9f8jZoieK1-JG4YLc3SES_JeHlBbhDEtlyiA2atnl2W0&usqp=CAU"
         />
       </div>
-      <div class="email">jennifer23@gmail.com</div>
+      <div class="email">{{email}}</div>
     </div>
 
     <div class="bottom-section">
@@ -23,25 +24,21 @@
   </div>
   <div class="wish-books">
     <!--If there are wished books-->
-    <div class="book">
+{{#each wishList}}
+ <div class="book">
       <div class="info-container-profile">
-        <img src="./image/Beautiful-world.jpeg" />
+        <img src="{{imageUrl}}" />
       </div>
       <div class="details-btn">
-        <a href="#" class="details">Details</a>
+        <a href="/details/{{_id}}" class="details">Details</a>
       </div>
     </div>
 
-    <div class="book">
-      <div class="info-container-profile">
-        <img src="./image/Unsettled-ground.jpeg" />
-      </div>
-      <div class="details-btn">
-        <a href="#" class="details">Details</a>
-      </div>
-    </div>
-
+{{else}}
     <!--If there are no wished books-->
     <h2 class="no-record-in-profile">There are no book reviews found yet...</h2>
+  {{/each}}
   </div>
+  
+   {{/with}}
 </section>
