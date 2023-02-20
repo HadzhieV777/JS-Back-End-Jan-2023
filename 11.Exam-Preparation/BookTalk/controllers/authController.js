@@ -1,10 +1,12 @@
-const validator = require("validator");
-const { register, login } = require("../services/userService");
-const { parseError } = require("../utils/parser");
-
 const authController = require("express").Router();
+const { getByUserWishlist } = require("../services/bookService");
 
-authController.get("/register", (req, res) => {
+const { isGuest, isUser } = require("../middlewares/guards");
+const { parseError } = require("../utils/parser");
+const { register, login } = require("../services/userService");
+const validator = require("validator");
+
+authController.get("/register", isGuest(), (req, res) => {
   res.render("auth/register", {
     title: "Register",
   });
@@ -50,7 +52,7 @@ authController.post("/register", async (req, res) => {
   }
 });
 
-authController.get("/login", (req, res) => {
+authController.get("/login", isGuest(), (req, res) => {
   res.render("auth/login", {
     title: "Login",
   });
@@ -78,14 +80,16 @@ authController.post("/login", async (req, res) => {
   }
 });
 
-authController.get("/logout", (req, res) => {
+authController.get("/logout", isUser(), (req, res) => {
   res.clearCookie("auth");
   res.redirect("/");
 });
 
-authController.get("/profile", (req, res) => {
+authController.get("/profile", isUser(), async (req, res) => {
+  const wishList = await getByUserWishlist(req.user._id);
   res.render("auth/profile", {
     title: "Profile",
+    user: Object.assign({ wishList: wishList.map((b) => b.name) }, req.user),
   });
 });
 
