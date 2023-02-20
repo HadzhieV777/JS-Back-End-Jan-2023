@@ -1,9 +1,16 @@
-<h1>Register Page</h1>
+<section class="register-form-container">
 
-<form method="post" action="/auth/register">
-  <label>Username:
-    <input type="text" name="username" value="{{body.username}}" /></label>
-  <label>Password: <input type="password" name="password" /></label>
-  <label>Repeat Password: <input type="password" name="rePass" /></label>
-  <button>Register</button>
-</form>
+  <form action="/auth/register" method="POST">
+    <h3>Register</h3>
+    <label for="email">Email</label>
+    <input type="email" name="email" class="box" id="email" value="{{body.email}}" />
+    <label for="username">Username</label>
+    <input type="text" name="username" class="box" id="username" {{body.username}}/>
+    <label for="password">Password</label>
+    <input type="password" name="password" class="box" id="password" />
+    <label for="rePass">Confirm Password</label>
+    <input type="password" name="rePass" class="box" id="rePass" />
+    <input type="submit" value="Register" class="btn" />
+    <p>Have an account ? <a href="/auth/login">Click here</a></p>
+  </form>
+</section>
